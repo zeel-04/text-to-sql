@@ -7,8 +7,8 @@ from text_to_sql.llms.litellm_client import LiteLLM
 config = get_settings()
 
 class DemoResponse(BaseModel):
-    name: str
-    age: int
+    name: str | None
+    age: int | None
 
 
 @pytest.fixture

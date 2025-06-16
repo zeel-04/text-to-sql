@@ -11,7 +11,7 @@ async def main():
     response = await llm.generate_text_with_response_format(
         messages=[
             {"role": "system", "content": "You are a helpful assistant..answer in json format. with keys name and age"},
-            {"role": "user", "content": "I am years old. What is the capital of France?"},
+            {"role": "user", "content": "I am 25 years old. My name is John"},
         ],
         response_format=DemoResponse,
     )
