@@ -1,7 +1,7 @@
 import asyncio
 from config.settings import get_settings
 from text_to_sql.llms.litellm_client import LiteLLM
-from text_to_sql.llms.response_models import DemoResponse
+from tests.llms.test_litellm import DemoResponse
 
 config = get_settings()
 
