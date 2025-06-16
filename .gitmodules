@@ -1,0 +1,3 @@
+[submodule "text_to_sql/llms"]
+	path = text_to_sql/llms
+	url = https://github.com/mahant-solutions/llms.git
