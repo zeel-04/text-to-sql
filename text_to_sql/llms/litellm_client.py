@@ -28,7 +28,6 @@ class LiteLLM(BaseLLM):
         top_p: float | None = None,
         **kwargs: dict,
     ) -> str:
-        """Generate plain text response."""
         response = await acompletion(
             model=model or self.config.model,
             messages=messages,
@@ -36,6 +35,7 @@ class LiteLLM(BaseLLM):
             max_completion_tokens=max_completion_tokens
             or self.config.max_completion_tokens,
             top_p=top_p or self.config.top_p,
+            **self.config.custom_kwargs,
             **kwargs,
         )
         return response.choices[0].message.content
@@ -51,7 +51,7 @@ class LiteLLM(BaseLLM):
         top_p: float | None = None,
         **kwargs: dict,
     ) -> T:
-        """Generate response with a response format."""
+        """Generate response with a structured output."""
         response = await acompletion(
             model=model or self.config.model,
             messages=messages,
@@ -60,6 +60,7 @@ class LiteLLM(BaseLLM):
             max_completion_tokens=max_completion_tokens
             or self.config.max_completion_tokens,
             top_p=top_p or self.config.top_p,
+            **self.config.custom_kwargs,
             **kwargs,
         )
         response_content = response.choices[0].message.content
