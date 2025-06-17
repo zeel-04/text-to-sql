@@ -1,17 +1,6 @@
 from abc import ABC, abstractmethod
-from typing import Literal, TypedDict, TypeVar
 
-from pydantic import BaseModel
-
-
-class Message(TypedDict):
-    """Standard LLM message format following OpenAI/industry conventions."""
-
-    role: Literal["system", "user", "assistant"]
-    content: str
-
-
-T = TypeVar("T", bound=BaseModel)
+from .schemas import Message, T
 
 
 class BaseLLM(ABC):

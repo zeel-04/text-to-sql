@@ -2,14 +2,15 @@ from litellm import acompletion
 from litellm.utils import get_valid_models
 from tenacity import retry, stop_after_attempt
 
-from config.settings import LLMSettings
-from text_to_sql.llms.base import BaseLLM, Message, T
+from .base import BaseLLM, T
+from .config import LLMConfig
+from .schemas import Message
 
 
 class LiteLLM(BaseLLM):
     """LiteLLM implementation of the BaseLLM class."""
 
-    def __init__(self, config: LLMSettings):
+    def __init__(self, config: LLMConfig):
         """Initialize LiteLLM client with configuration.
 
         Args:

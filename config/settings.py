@@ -11,7 +11,6 @@ load_dotenv()
 class LLMSettings(BaseSettings):
     """Base settings for LLM configurations."""
 
-    api_key: str | None = Field(None, description="API key for the LLM service")
     model: str | None = Field(None, description="Model name to use")
     temperature: float | None = Field(
         None, ge=0.0, le=2.0, description="Temperature for generation"
@@ -27,7 +26,6 @@ class LLMSettings(BaseSettings):
 class OpenAISettings(LLMSettings):
     """OpenAI-specific settings."""
 
-    api_key: str = os.getenv("OPENAI_API_KEY")
     model: str = "gpt-4.1"
 
 
