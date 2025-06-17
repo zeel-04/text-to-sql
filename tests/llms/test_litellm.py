@@ -1,10 +1,10 @@
 import pytest
 from pydantic import BaseModel
 
-from config.settings import get_settings
+from text_to_sql.llms.config import get_config
 from text_to_sql.llms.litellm_client import LiteLLM
 
-config = get_settings()
+config = get_config()
 
 class DemoResponse(BaseModel):
     name: str | None
