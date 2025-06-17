@@ -1,9 +1,7 @@
 from pydantic import BaseModel, Field
 
 
-class LLMConfig(BaseModel):
-    """Base config for LLM configurations."""
-
+class BaseConfig(BaseModel):
     model: str | None = Field(None, description="Model name to use")
     temperature: float | None = Field(
         None, ge=0.0, le=2.0, description="Temperature for generation"
@@ -16,13 +14,16 @@ class LLMConfig(BaseModel):
     )
 
 
-class OpenAILLMConfig(LLMConfig):
-    """Config for OpenAI LLM."""
-
+class OpenAIConfig(BaseConfig):
     model: str = "gpt-4o-mini"
     temperature: float = 0.0
     max_completion_tokens: int = 1000
-    top_p: float = 1.0
+    top_p: float = 0.3
 
 
-print(OpenAILLMConfig().model_dump())
+class Config(BaseModel):
+    openai: OpenAIConfig = OpenAIConfig()
+
+
+def get_config() -> Config:
+    return Config()

@@ -1,5 +1,3 @@
-import os
-
 from dotenv import load_dotenv
 from pydantic import Field
 from pydantic_settings import BaseSettings
@@ -42,8 +40,4 @@ def get_settings() -> Settings:
 
 settings = get_settings()
 
-if __name__ == "__main__":
-    test_settings = get_settings()
-    api_key = test_settings.openai.api_key
-    print(f"API key loaded: {'✓' if api_key else '✗'}")
-    print(f"API key prefix: {api_key[:7]}..." if api_key else "No API key found")
+

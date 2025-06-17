@@ -94,9 +94,9 @@ Run it any time with:
    - It pulls changes in the parent repository and then checks out each submodule to the specific commit referenced by the updated parent repo.
    - It does NOT fetch the latest changes from the submodule’s remote—it just checks out the pinned commit.
 
-Think of it like:
+   Think of it like:
 
-“Follow whatever commit the main repo is pointing to for each submodule.”
+   “Follow whatever commit the main repo is pointing to for each submodule.”
 
 2. `git submodule update --recursive --remote`
    - Purpose: Actively updates submodules to the latest commit on their tracking branch (usually main or master).

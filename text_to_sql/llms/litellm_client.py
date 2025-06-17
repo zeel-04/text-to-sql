@@ -3,14 +3,14 @@ from litellm.utils import get_valid_models
 from tenacity import retry, stop_after_attempt
 
 from .base import BaseLLM, T
-from .config import LLMConfig
+from .config import BaseConfig
 from .schemas import Message
 
 
 class LiteLLM(BaseLLM):
     """LiteLLM implementation of the BaseLLM class."""
 
-    def __init__(self, config: LLMConfig):
+    def __init__(self, config: BaseConfig):
         """Initialize LiteLLM client with configuration.
 
         Args:
@@ -36,7 +36,6 @@ class LiteLLM(BaseLLM):
             max_completion_tokens=max_completion_tokens
             or self.config.max_completion_tokens,
             top_p=top_p or self.config.top_p,
-            api_key=self.config.api_key,
             **kwargs,
         )
         return response.choices[0].message.content
@@ -61,7 +60,6 @@ class LiteLLM(BaseLLM):
             max_completion_tokens=max_completion_tokens
             or self.config.max_completion_tokens,
             top_p=top_p or self.config.top_p,
-            api_key=self.config.api_key,
             **kwargs,
         )
         response_content = response.choices[0].message.content
